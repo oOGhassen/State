@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from 'react'
+import "./App.css"
+export default class App extends Component {
+  state={
+    count:0,
+    isShow:true,
+    fullName:"Ghassen Nabli",
+    bio:"Student in GoMyCode",
+  }
+  handlShow=()=>{
+    this.setState({isShow:!this.state.isShow})
+  }
+  decrement=()=>{
+    this.setState({count:this.state.count-1})
+  }
+    increment=()=>{
+    this.setState({count:this.state.count+1})
+  }
+  componentDidMount(){
+    console.log("componentDidMount")
+  }
+  componentDidUpdate(){
+    console.log("componentDidUpdate")
+  }
+  componentWillUnmount(){
+    console.log("componentWillUnmount")
+  }
+  render() {
+    console.log("render")
+    return (
+      <div className='App'>
+        <button onClick={this.handlShow}>{this.state.isShow?"Hide":"Show"}</button>
+        {
+          this.state.isShow&&
+          <div>
+            <h1>{this.state.count}</h1>
+            <h1>fullName</h1>
+        <button onClick={this.increment}>+</button>
+        <button onClick={this.decrement}>-</button>
+      </div>
+        }
+        </div>
+    )
+  }
 }
-
-export default App;
